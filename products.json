@@ -1,5 +1,5 @@
 {
-  "reviewer": { "repo": "greenstevester/db-architecture-reviewer", "tag": "v1.7.0" },
+  "reviewer": { "repo": "greenstevester/db-architecture-reviewer", "tag": "v1.7.1" },
   "banner": "sourcegraph",
   "products": [
     {
