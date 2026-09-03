@@ -1,0 +1,91 @@
+{
+  "reviewer": { "repo": "greenstevester/db-architecture-reviewer", "tag": "v1.7.0" },
+  "banner": "sourcegraph",
+  "products": [
+    {
+      "slug": "temporal",
+      "name": "Temporal",
+      "homepage": "https://temporal.io",
+      "repo": "temporalio/temporal",
+      "commit": "19a774302c613da9adc4436ab14278ccdca8e0a5",
+      "ref": "v1.31.2",
+      "license": "MIT",
+      "blurb": "Durable execution engine: workflow histories, task queues, namespaces and visibility. No foreign keys at all; rows are tied together by shard and namespace ids by convention.",
+      "source": { "kind": "sql", "paths": ["schema/postgresql/v12/temporal/schema.sql", "schema/postgresql/v12/visibility/schema.sql"] },
+      "domains": "curated"
+    },
+    {
+      "slug": "miniflux",
+      "name": "Miniflux",
+      "homepage": "https://miniflux.app",
+      "repo": "miniflux/v2",
+      "commit": "c4d54f87a81b30aa173fddf05d7ff83ae7da5796",
+      "ref": "2.3.3",
+      "license": "Apache-2.0",
+      "blurb": "Minimalist feed reader: users, feeds, entries, enclosures, API keys. The schema is rebuilt here from the migration strings in the Go source.",
+      "source": { "kind": "go-raw-strings", "path": "internal/database/migrations.go" },
+      "domains": "curated"
+    },
+    {
+      "slug": "listmonk",
+      "name": "Listmonk",
+      "homepage": "https://listmonk.app",
+      "repo": "knadh/listmonk",
+      "commit": "ef0a75872463f10a4848af6c547d1c057405453a",
+      "ref": "v6.2.0",
+      "license": "AGPL-3.0",
+      "blurb": "Newsletter and mailing-list manager: subscribers, lists, campaigns, templates, bounces.",
+      "source": { "kind": "sql", "paths": ["schema.sql"] },
+      "domains": "curated"
+    },
+    {
+      "slug": "synapse",
+      "name": "Matrix Synapse",
+      "homepage": "https://element-hq.github.io/synapse/",
+      "repo": "element-hq/synapse",
+      "commit": "92fb8a06dc351c184eb96360c67b124f26c2d54b",
+      "ref": "v1.160.0",
+      "license": "AGPL-3.0",
+      "blurb": "Matrix homeserver: rooms, events, devices, end-to-end keys, federation. Almost no foreign keys by design; this is the full schema at schema version 72, before later deltas.",
+      "source": { "kind": "sql", "paths": ["synapse/storage/schema/main/full_schemas/72/full.sql.postgres", "synapse/storage/schema/state/full_schemas/72/full.sql.postgres"] },
+      "domains": "prefix"
+    },
+    {
+      "slug": "sourcegraph",
+      "name": "Sourcegraph",
+      "homepage": "https://sourcegraph.com",
+      "repo": "sourcegraph/sourcegraph-public-snapshot",
+      "commit": "c864f15af264f0f456a6d8a83290b5c940715349",
+      "ref": "main (public snapshot)",
+      "license": "Apache-2.0",
+      "blurb": "Code search and intelligence: repositories, code-intel uploads, batch changes, insights, permissions. The frontend database's squashed migrations.",
+      "source": { "kind": "sql", "paths": ["migrations/frontend/squashed.sql"] },
+      "domains": "prefix"
+    },
+    {
+      "slug": "calcom",
+      "name": "Cal.com",
+      "homepage": "https://cal.com",
+      "repo": "calcom/cal.com",
+      "commit": "1c193cca8682b33b9866c792186033f7ef886682",
+      "ref": "v6.2.0",
+      "license": "AGPL-3.0",
+      "blurb": "Scheduling: users, teams, event types, bookings, availability, apps. DDL emitted from the Prisma schema, no database needed.",
+      "source": { "kind": "prisma", "path": "packages/prisma/schema.prisma" },
+      "domains": "prefix"
+    },
+    {
+      "slug": "gitlab",
+      "name": "GitLab CE",
+      "homepage": "https://about.gitlab.com",
+      "repo": "gitlabhq/gitlabhq",
+      "commit": "668508315ee5b5a59aa018424f741c27e81bafe1",
+      "ref": "v19.3.1",
+      "license": "MIT",
+      "blurb": "The whole DevOps platform: projects, merge requests, CI, security, packages, and much more. 1,429 tables: the stress test. Far past the explorer's comfort zone, kept in on purpose.",
+      "source": { "kind": "sql", "paths": ["db/structure.sql"] },
+      "domains": "prefix",
+      "stress": true
+    }
+  ]
+}
