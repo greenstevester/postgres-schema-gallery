@@ -26,6 +26,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npx playwright install --with-deps chromium
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: node --disable-warning=ExperimentalWarning build/index.ts
       - uses: actions/upload-pages-artifact@v3
         with:
