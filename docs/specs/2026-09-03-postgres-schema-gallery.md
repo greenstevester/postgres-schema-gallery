@@ -105,7 +105,7 @@ Below the grid: how to add a product (a pull request touching `products.json` an
 
 ## The reviewer's README
 
-A separate, small pull request in `db-architecture-reviewer`: under the tagline, `[![Real schemas, rotatable](https://greenstevester.github.io/postgres-schema-gallery/banner.gif)](https://greenstevester.github.io/postgres-schema-gallery/)` with a one-line caption naming the products. The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
+A separate, small pull request in `db-architecture-reviewer`: under the badges, `[![Real schemas, rotatable](https://greensill.net/postgres-schema-gallery/banner.gif)](https://greensill.net/postgres-schema-gallery/)` with a one-line caption naming the products. (Steve's GitHub Pages sites resolve under his custom domain `greensill.net`, so that is the canonical address; the `github.io` one redirects.) The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
 
 ## Deployment
 
