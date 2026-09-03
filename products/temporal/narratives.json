@@ -1,0 +1,76 @@
+{
+  "database": {
+    "title": "Temporal",
+    "blurb": "The persistence schema of the Temporal server for PostgreSQL 12 and later, plus the standard visibility store. There are no foreign keys: every table carries shard_id and namespace_id (or a queue type) and the server keeps rows consistent itself, which is deliberate for a sharded, high-write store."
+  },
+  "domains": [
+    {
+      "key": "namespaces",
+      "title": "Namespaces",
+      "blurb": "Registered namespaces and the metadata row that versions them.",
+      "tenant_scoped": false,
+      "tables": ["namespaces", "namespace_metadata"]
+    },
+    {
+      "key": "executions",
+      "title": "Shards and executions",
+      "blurb": "Shard ownership, the mutable state of every workflow execution, the current run per workflow id, buffered events, and the CHASM node tree.",
+      "tenant_scoped": false,
+      "tables": ["shards", "executions", "current_executions", "current_chasm_executions", "buffered_events", "chasm_node_maps"]
+    },
+    {
+      "key": "mutable-state",
+      "title": "Mutable state maps",
+      "blurb": "Per-execution maps keyed by shard, namespace, workflow and run: activities, timers, child workflows, cancel and signal requests.",
+      "tenant_scoped": false,
+      "tables": ["activity_info_maps", "timer_info_maps", "child_execution_info_maps", "request_cancel_info_maps", "signal_info_maps", "signals_requested_sets"]
+    },
+    {
+      "key": "history",
+      "title": "Event history",
+      "blurb": "The append-only history nodes and the branch tree that lets runs share prefixes.",
+      "tenant_scoped": false,
+      "tables": ["history_node", "history_tree"]
+    },
+    {
+      "key": "matching",
+      "title": "Task queues (matching)",
+      "blurb": "Workflow and activity tasks waiting for a worker, the queues that hold them, per-queue user data and build-id routing. The v2 tables are the fairness-aware successors.",
+      "tenant_scoped": false,
+      "tables": ["tasks", "task_queues", "tasks_v2", "task_queues_v2", "task_queue_user_data", "build_id_to_task_queue"]
+    },
+    {
+      "key": "history-tasks",
+      "title": "History service task queues",
+      "blurb": "The internal queues the history service works through: immediate and scheduled tasks, transfer, timer, replication (with its dead-letter queue) and visibility tasks.",
+      "tenant_scoped": false,
+      "tables": ["history_immediate_tasks", "history_scheduled_tasks", "transfer_tasks", "timer_tasks", "replication_tasks", "replication_tasks_dlq", "visibility_tasks"]
+    },
+    {
+      "key": "cluster",
+      "title": "Queues and cluster",
+      "blurb": "Generic persistence queues and their metadata, the newer queue tables, cluster metadata and membership.",
+      "tenant_scoped": false,
+      "tables": ["queue", "queue_metadata", "queues", "queue_messages", "cluster_metadata_info", "cluster_membership"]
+    },
+    {
+      "key": "nexus",
+      "title": "Nexus",
+      "blurb": "Nexus endpoints and the partition status row that versions them.",
+      "tenant_scoped": false,
+      "tables": ["nexus_endpoints", "nexus_endpoints_partition_status"]
+    },
+    {
+      "key": "visibility",
+      "title": "Visibility",
+      "blurb": "The standard visibility store: one denormalised row per execution for listing and search.",
+      "tenant_scoped": false,
+      "tables": ["executions_visibility"]
+    }
+  ],
+  "conventions": [
+    "Tables are keyed by shard_id and namespace_id; there are no foreign keys, and the server enforces consistency.",
+    "Binary protobuf payloads live in data / data_encoding column pairs."
+  ],
+  "assertions": {}
+}

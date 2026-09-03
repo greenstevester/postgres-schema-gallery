@@ -1,0 +1,41 @@
+{
+  "database": {
+    "title": "Miniflux",
+    "blurb": "The schema behind Miniflux, a minimalist feed reader, rebuilt from the migration strings in its Go source: users and how they sign in, the feeds and categories they follow, the entries fetched for them, and a few system tables."
+  },
+  "domains": [
+    {
+      "key": "accounts",
+      "title": "Users and access",
+      "blurb": "Users, their browser and API sessions, API keys, passkeys, and per-user third-party integrations.",
+      "tenant_scoped": false,
+      "tables": ["users", "sessions", "web_sessions", "api_keys", "webauthn_credentials", "integrations"]
+    },
+    {
+      "key": "feeds",
+      "title": "Feeds",
+      "blurb": "Feeds and the categories that group them, plus the deduplicated icons feeds share.",
+      "tenant_scoped": false,
+      "tables": ["categories", "feeds", "icons", "feed_icons"]
+    },
+    {
+      "key": "entries",
+      "title": "Entries",
+      "blurb": "Fetched entries, their enclosures, and the tombstones that keep a deleted entry from coming back.",
+      "tenant_scoped": false,
+      "tables": ["entries", "enclosures", "entry_tombstones"]
+    },
+    {
+      "key": "system",
+      "title": "System",
+      "blurb": "Schema version, CSRF tokens, and the ACME certificate cache.",
+      "tenant_scoped": false,
+      "tables": ["schema_version", "tokens", "acme_cache"]
+    }
+  ],
+  "conventions": [
+    "Every user-owned table carries user_id with ON DELETE CASCADE, so deleting a user takes their feeds and entries with it.",
+    "Timestamps are TIMESTAMP WITH TIME ZONE."
+  ],
+  "assertions": {}
+}

@@ -1,0 +1,48 @@
+{
+  "database": {
+    "title": "Listmonk",
+    "blurb": "The schema behind listmonk, a self-hosted newsletter and mailing-list manager: subscribers and the lists they belong to, campaigns and their deliveries, media, bounces, and the users and roles that run it."
+  },
+  "domains": [
+    {
+      "key": "audience",
+      "title": "Audience",
+      "blurb": "Subscribers, lists, the subscription rows that join them with a status, and the bounces recorded against a subscriber.",
+      "tenant_scoped": false,
+      "tables": ["subscribers", "lists", "subscriber_lists", "bounces"]
+    },
+    {
+      "key": "campaigns",
+      "title": "Campaigns",
+      "blurb": "Campaigns, the lists they target, the templates they render with, and the views and link clicks they earn.",
+      "tenant_scoped": false,
+      "tables": ["campaigns", "campaign_lists", "templates", "campaign_views", "links", "link_clicks"]
+    },
+    {
+      "key": "media",
+      "title": "Media",
+      "blurb": "Uploaded files and which campaigns embed them.",
+      "tenant_scoped": false,
+      "tables": ["media", "campaign_media"]
+    },
+    {
+      "key": "access",
+      "title": "Users and roles",
+      "blurb": "Admin users, the roles that scope what they can do (including per-list roles), and their sessions.",
+      "tenant_scoped": false,
+      "tables": ["users", "roles", "sessions"]
+    },
+    {
+      "key": "settings",
+      "title": "Settings",
+      "blurb": "The key-value settings table.",
+      "tenant_scoped": false,
+      "tables": ["settings"]
+    }
+  ],
+  "conventions": [
+    "Primary keys are SERIAL integers; public identifiers are separate UUID columns.",
+    "Timestamps are TIMESTAMP WITH TIME ZONE."
+  ],
+  "assertions": {}
+}
