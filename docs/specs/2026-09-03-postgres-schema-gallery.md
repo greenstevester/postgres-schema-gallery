@@ -105,7 +105,7 @@ Below the grid: how to add a product (a pull request touching `products.json` an
 
 ## The reviewer's README
 
-A separate, small pull request in `db-architecture-reviewer`: under the badges, `[![Real schemas, rotatable](https://greensill.net/postgres-schema-gallery/banner.gif)](https://greensill.net/postgres-schema-gallery/)` with a one-line caption naming the products. (Steve's GitHub Pages sites resolve under his custom domain `greensill.net`, so that is the canonical address; the `github.io` one redirects.) The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
+A separate, small pull request in `db-architecture-reviewer`: at the top, `[![Real schemas, rotatable](https://greenstevester.github.io/postgres-schema-gallery/banner.gif)](https://github.com/greenstevester/postgres-schema-gallery)` with a one-line caption naming the products. Steve decided on 2026-09-04 that the gallery's front door is the repository: every published link to "the gallery" is the repo URL, the repo's homepage field carries the live site, and only deep links to a product's docs or explorer (and the banner image itself) use the Pages address `greenstevester.github.io`, never the custom domain `greensill.net` that also serves it. The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
 
 ## Deployment
 
