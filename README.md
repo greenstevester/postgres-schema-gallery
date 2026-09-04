@@ -4,7 +4,7 @@ The real PostgreSQL schemas behind well-known open-source products, documented a
 [db-architecture-review](https://github.com/greenstevester/db-architecture-reviewer), each with a
 rotatable 3D explorer.
 
-**Site:** https://greensill.net/postgres-schema-gallery/
+**Repo:** https://github.com/greenstevester/postgres-schema-gallery
 
 Seven products in the first cut: Temporal, Miniflux, Listmonk, Matrix Synapse, Sourcegraph,
 Cal.com, and GitLab CE at 1,429 tables as the stress test. The front page shows every schema as
