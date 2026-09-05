@@ -1,3 +1,47 @@
+<p align="center">
+  <a href="https://greenstevester.github.io/postgres-schema-gallery/"><img src="https://greenstevester.github.io/postgres-schema-gallery/banner.gif" alt="Real PostgreSQL schemas turning in the 3D explorer: one island per domain, every foreign key an arc" width="800"></a>
+</p>
+<p align="center">
+  <a href="https://greenstevester.github.io/postgres-schema-gallery/"><b>Open the gallery</b></a><br>
+  <sub>Every schema as a live, slowly turning miniature. Click one for its full explorer and the reviewer's findings.</sub>
+</p>
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/temporal/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/temporal/schema-map.svg" width="210" alt="Temporal schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/temporal/schema-3d.html"><b>Temporal</b></a><br><sub>38 tables</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/miniflux/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/miniflux/schema-map.svg" width="210" alt="Miniflux schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/miniflux/schema-3d.html"><b>Miniflux</b></a><br><sub>16 tables</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/listmonk/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/listmonk/schema-map.svg" width="210" alt="Listmonk schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/listmonk/schema-3d.html"><b>Listmonk</b></a><br><sub>16 tables</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/synapse/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/synapse/schema-map.svg" width="210" alt="Matrix Synapse schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/synapse/schema-3d.html"><b>Matrix Synapse</b></a><br><sub>137 tables</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/sourcegraph/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/sourcegraph/schema-map.svg" width="210" alt="Sourcegraph schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/sourcegraph/schema-3d.html"><b>Sourcegraph</b></a><br><sub>180 tables</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/calcom/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/calcom/schema-map.svg" width="210" alt="Cal.com schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/calcom/schema-3d.html"><b>Cal.com</b></a><br><sub>121 tables</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/gitlab/schema-3d.html"><img src="https://greenstevester.github.io/postgres-schema-gallery/gitlab/schema-map.svg" width="210" alt="GitLab CE schema map"></a><br>
+      <a href="https://greenstevester.github.io/postgres-schema-gallery/gitlab/schema-3d.html"><b>GitLab CE</b></a><br><sub>1,429 tables</sub>
+    </td>
+    <td align="center" width="25%"><sub>Each thumbnail is that product&#39;s schema map.<br>Click one to open its rotatable explorer.</sub></td>
+  </tr>
+</table>
+
 # postgres-schema-gallery
 
 The real PostgreSQL schemas behind well-known open-source products, documented and reviewed by
