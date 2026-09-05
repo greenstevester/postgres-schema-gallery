@@ -17,7 +17,12 @@ Nothing third-party lives in this repository. `products.json` names each product
 pinned commit, the schema file, and its licence. On every push to `main` a workflow fetches those
 files at those commits, derives plain SQL where needed (Go migration strings for Miniflux, a Prisma
 schema for Cal.com), runs the reviewer as a library, writes one documentation folder per product,
-renders the front page, records the animated banner, and deploys `site/` to GitHub Pages.
+records a three-second clip of each explorer turning plus the wide animated banner, renders the
+front page, and deploys `site/` to GitHub Pages.
+
+The front page draws its miniatures live with WebGL. A browser without WebGL gets each product's
+recorded clip instead, with the flat schema map as its poster, plus a note saying where that
+browser's WebGL switch is and that a private window (extensions off) is the quickest test.
 
 Domains come from a hand-curated `products/<slug>/narratives.json` where one exists (Temporal,
 Miniflux, Listmonk). Otherwise the build groups tables by name prefix and the card says
