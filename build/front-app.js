@@ -4,8 +4,21 @@
 (() => {
   const G = window.GALLERY;
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // No WebGL: keep the flat map posters, say so, and show the switch for this browser. The
+  // browser is read from the user agent, which is only good enough to pick a paragraph.
   const probe = document.createElement('canvas');
-  if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) { document.body.classList.add('nogl'); return; }
+  if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) {
+    document.body.classList.add('nogl');
+    const ua = navigator.userAgent;
+    const browser = /Edg\//.test(ua) ? 'edge' : /Firefox\//.test(ua) ? 'firefox'
+      : /Chrome\/|Chromium\//.test(ua) ? 'chrome' : /Safari\//.test(ua) ? 'safari' : 'other';
+    const tip = document.querySelector(`.nogl-note p[data-browser="${browser}"]`);
+    if (tip) tip.classList.add('on');
+    // The recorded clips stand in for the miniatures; they are only fetched now, not for viewers with WebGL.
+    for (const v of document.querySelectorAll('video.poster')) { v.preload = 'auto'; v.play().catch(() => {}); }
+    return;
+  }
+  document.body.classList.add('gl');
 
   const canvas = document.getElementById('gl');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });

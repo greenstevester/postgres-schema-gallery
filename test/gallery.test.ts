@@ -68,7 +68,7 @@ describe('renderIndex', () => {
     stats: { tables, columns: 10, foreign_keys: 3, domains: 2, findings: { error: 1, warn: 2, info: 3 } },
     mini: { domains: [{ key: 'd', title: 'd', color: '#ffffff' }], tables: [{ name: 't', domain: 'd' }], fks: [], hubs: [] },
   });
-  const assets = { reviewerTag: 'v1.7.0', built: '2026-09-03', three: '/* three:start */const THREE={};/* three:end */', layoutJs: 'export const CARD = 1;\nexport function layout(m) { return m; }\n', css: 'body{}', app: '(() => {})();' };
+  const assets = { reviewerTag: 'v1.7.0', built: '2026-09-03', three: '/* three:start */const THREE={};/* three:end */', layoutJs: 'export const CARD = 1;\nexport function layout(m) { return m; }\n', css: 'body{}', app: '(() => {})();', clips: new Set(['big']) };
   const html = renderIndex([card('small', 12), card('big', 1429)], assets);
 
   it('renders one card per product with escaped text, counts, links and the stress label', () => {
@@ -79,6 +79,17 @@ describe('renderIndex', () => {
     assert.match(html, /by table prefix/);
     assert.match(html, /href="big\/schema-3d\.html"/);
     assert.match(html, /href="https:\/\/github\.com\/o\/r\/tree\/b{40}"/);
+  });
+
+  it('gives every card a fallback (a recorded clip where one exists, else the flat map) and tells a WebGL-less browser where its switch is', () => {
+    assert.match(html, /<video class="poster" src="big\/clip\.mp4" poster="big\/schema-map\.svg" preload="none" muted loop playsinline><\/video>/);
+    assert.match(html, /<img class="poster" src="small\/schema-map\.svg" alt="" loading="lazy">/);
+    assert.equal((html.match(/class="poster"/g) ?? []).length, 2);
+    assert.match(html, /<div class="nogl-note" role="status">/);
+    for (const b of ['chrome', 'edge', 'firefox', 'safari', 'other']) assert.match(html, new RegExp(`<p data-browser="${b}">`), b);
+    assert.match(html, /chrome:\/\/gpu/);
+    assert.match(html, /webgl\.disabled/);
+    assert.match(html, /private or incognito window/);
   });
 
   it('loads nothing from the web and inlines the bundle, the layout module and the app', () => {

@@ -6,7 +6,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 
-import { recordBanner } from './banner.ts';
+import { recordAll } from './banner.ts';
 import { CACHE, fetchSchema } from './fetch.ts';
 import { loadManifest } from './manifest.ts';
 import { REVIEWER_DIR, SKILL_DIR, loadReviewer, reviewProduct, type Card } from './review.ts';
@@ -60,6 +60,10 @@ async function main(): Promise<void> {
     console.log(`${p.slug.padEnd(12)} ${String(card.stats.tables).padStart(5)} tables ${String(card.stats.foreign_keys).padStart(5)} fks `
       + `${String(card.stats.domains).padStart(3)} domains (${card.domainsHow})  findings ${f.error}/${f.warn}/${f.info}  ${Date.now() - t0} ms`);
   }
+  // Recordings come before the front page, which needs to know which cards have a clip.
+  const recorded = values['no-banner'] ? { clips: new Set<string>(), banner: false } : await recordAll(SITE, cards.map((c) => c.slug), manifest.banner);
+  if (recorded.clips.size) console.log(`clips for ${recorded.clips.size} of ${cards.length} products`);
+  if (recorded.banner) console.log(`site/banner.gif${existsSync(path.join(SITE, 'banner.webp')) ? ' and site/banner.webp' : ''}`);
   writeSite(cards, {
     reviewerTag: manifest.reviewer.tag,
     built: today(),
@@ -67,11 +71,9 @@ async function main(): Promise<void> {
     layoutJs: readFileSync(path.join(SKILL_DIR, 'scripts', 'schema-3d-layout.js'), 'utf8'),
     css: readFileSync('build/front.css', 'utf8'),
     app: readFileSync('build/front-app.js', 'utf8'),
+    clips: recorded.clips,
   }, SITE);
   console.log(`site/index.html with ${cards.length} cards`);
-  if (!values['no-banner'] && cards.some((c) => c.slug === manifest.banner)) {
-    if (await recordBanner(SITE, manifest.banner)) console.log(`site/banner.gif${existsSync(path.join(SITE, 'banner.webp')) ? ' and site/banner.webp' : ''}`);
-  }
   console.log(`cache in ${CACHE}/`);
 }
 
