@@ -1,5 +1,5 @@
 {
-  "reviewer": { "repo": "greenstevester/db-architecture-reviewer", "tag": "v1.7.1" },
+  "reviewer": { "repo": "greenstevester/archlens-postgres", "tag": "v2.0.0" },
   "banner": "sourcegraph",
   "products": [
     {

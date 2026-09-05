@@ -22,7 +22,7 @@ const SITE = 'site';
 function ensureReviewer(repo: string, tag: string): void {
   const local = process.env.GALLERY_REVIEWER_DIR;
   if (local) {
-    if (!existsSync(path.join(local, 'skills', 'db-architecture-review', 'scripts', 'db-review.ts'))) throw new Error(`GALLERY_REVIEWER_DIR ${local} is not a reviewer checkout`);
+    if (!existsSync(path.join(local, 'skills', 'archlens-postgres', 'scripts', 'archlens.ts'))) throw new Error(`GALLERY_REVIEWER_DIR ${local} is not a reviewer checkout`);
     rmSync(REVIEWER_DIR, { recursive: true, force: true });
     mkdirSync(CACHE, { recursive: true });
     symlinkSync(path.resolve(local), REVIEWER_DIR, 'dir');

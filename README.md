@@ -1,7 +1,7 @@
 # postgres-schema-gallery
 
 The real PostgreSQL schemas behind well-known open-source products, documented and reviewed by
-[db-architecture-review](https://github.com/greenstevester/db-architecture-reviewer), each with a
+[ArchLens Postgres](https://github.com/greenstevester/archlens-postgres), each with a
 rotatable 3D explorer.
 
 **Repo:** https://github.com/greenstevester/postgres-schema-gallery

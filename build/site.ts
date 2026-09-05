@@ -60,7 +60,7 @@ export function renderIndex(cards: Card[], a: SiteAssets): string {
     + '<canvas id="gl" aria-hidden="true"></canvas>\n'
     + '<main>'
     + '<header><h1>Real PostgreSQL schemas, reviewed</h1>'
-    + '<p class="tag">The database behind each product, documented and reviewed by <a href="https://github.com/greenstevester/db-architecture-reviewer">db-architecture-review</a>: '
+    + '<p class="tag">The database behind each product, documented and reviewed by <a href="https://github.com/greenstevester/archlens-postgres">ArchLens Postgres</a>: '
     + 'every table, every foreign key, the design findings, and a 3D explorer you can rotate. Each schema is fetched from the project\'s own repository at a pinned commit; nothing is edited by hand.</p>'
     + '<div class="nogl-note" role="status">'
     + '<p><b>This browser is not letting the page draw in 3D</b> (WebGL is unavailable), so each card plays a recording of its explorer instead of the live miniature. The docs and findings links work as normal; the explorers themselves need WebGL.</p>'
@@ -74,7 +74,7 @@ export function renderIndex(cards: Card[], a: SiteAssets): string {
     + `<section class="grid">${cards.map((c) => cardHtml(c, a.clips)).join('\n')}</section>\n`
     + '<footer><h2>Add a product</h2><p>Open a pull request that adds an entry to <code>products.json</code>: the repository, a commit, the schema file (plain SQL, Go migration strings, or a Prisma schema), the licence, and a blurb. '
     + 'A <code>products/&lt;slug&gt;/narratives.json</code> with hand-curated domains makes the review and the picture better; without one, domains come from table-name prefixes and the card says so.</p>'
-    + `<p class="meta">Built ${e(a.built)} with db-architecture-review ${e(a.reviewerTag)}. Schemas remain under their projects' licences; see <a href="NOTICE.md">NOTICE</a>. Gallery code is MIT.</p></footer>`
+    + `<p class="meta">Built ${e(a.built)} with ArchLens Postgres ${e(a.reviewerTag)}. Schemas remain under their projects' licences; see <a href="NOTICE.md">NOTICE</a>. Gallery code is MIT.</p></footer>`
     + '</main>\n'
     + `<script>window.GALLERY=${data};</script>\n`
     + `<script>${a.three}</script>\n`

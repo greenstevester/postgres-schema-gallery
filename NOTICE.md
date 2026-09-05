@@ -16,5 +16,5 @@ the generated documentation reproduces its table and column names.
 | GitLab CE | https://github.com/gitlabhq/gitlabhq | v19.3.1 (66850831) | MIT |
 
 The reviewer that produced the documentation is
-https://github.com/greenstevester/db-architecture-reviewer (MIT), at the tag named in
+https://github.com/greenstevester/archlens-postgres (MIT), at the tag named in
 `products.json`.

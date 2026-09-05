@@ -5,7 +5,7 @@ Status: decisions agreed in conversation with Steve (sibling repo, build-time fe
 
 ## Goal
 
-A public site where a developer sees the real PostgreSQL schemas behind well-known open-source products, each documented and reviewed by `db-architecture-review`, with a rotatable 3D explorer per product. The front page shows the schemas themselves: one live, slowly turning miniature per product, above the fold. The reviewer's own README carries an animated banner recorded from this site and links here.
+A public site where a developer sees the real PostgreSQL schemas behind well-known open-source products, each documented and reviewed by ArchLens Postgres (`archlens-postgres`, called `db-architecture-review` until 2026-09-05), with a rotatable 3D explorer per product. The front page shows the schemas themselves: one live, slowly turning miniature per product, above the fold. The reviewer's own README carries an animated banner recorded from this site and links here.
 
 ## What the repository holds
 
@@ -37,7 +37,7 @@ postgres-schema-gallery/
 
 ```json
 {
-  "reviewer": { "repo": "greenstevester/db-architecture-reviewer", "tag": "v1.7.0" },
+  "reviewer": { "repo": "greenstevester/archlens-postgres", "tag": "v1.7.0" },
   "products": [
     {
       "slug": "temporal",
@@ -84,7 +84,7 @@ Temporal has no foreign keys at all (its tables key on shard and namespace by co
 `node build/index.ts` (Node 24, no build step, TypeScript stripped at run time, like the reviewer):
 
 1. **Fetch.** For each product, download the source files from `https://raw.githubusercontent.com/<repo>/<commit>/<path>` into `.cache/<slug>/`, skip when already present with the right commit, and derive `schema.sql` per `source.kind`. A fetch error fails the build with the product named.
-2. **Reviewer.** `git clone --depth 1 --branch <tag>` of the reviewer into `.cache/reviewer/`, then `npm ci` in its skill folder. The build imports it as a library: `parseSchema`, `Reviewer`, `modelToJson`, `writeMarkdown`, `writeHtml`, `writeSchema3d`, `schema3dModel` from `scripts/db-review.ts`. Nothing is spawned; the model the front page needs comes from the same parse.
+2. **Reviewer.** `git clone --depth 1 --branch <tag>` of the reviewer into `.cache/reviewer/`, then `npm ci` in its skill folder. The build imports it as a library: `parseSchema`, `Reviewer`, `modelToJson`, `writeMarkdown`, `writeHtml`, `writeSchema3d`, `schema3dModel` from `scripts/archlens.ts`. Nothing is spawned; the model the front page needs comes from the same parse.
 3. **Narratives.** Curated file or prefix-generated, written to `.cache/<slug>/narratives.json` so the outputs record what was used.
 4. **Review.** Per product: parse, review, write `site/<slug>/` (the reviewer's usual files: `index.html`, `schema-3d.html`, `README.md`, `FINDINGS.md`, `schema.json`, `erd.svg`, `domains/`), and collect a card record: name, blurb, licence, upstream link to the commit, table, foreign-key and domain counts, finding counts, and a pruned model for the miniature (domains with key and colour, tables with name and domain, foreign keys with child and parent, hubs).
 5. **Site.** `site/index.html`, self-contained like everything else: the reviewer's own Three.js bundle (via its exported `bundleThree()`) and layout module (`schema-3d-layout.js`, `export` stripped) inlined once, the card records as JSON, and the front-page app. `site/products.json` alongside for anyone who wants the numbers. `NOTICE.md` copied in as `site/NOTICE.md`.
@@ -109,7 +109,7 @@ Steve's own Chrome refused a WebGL context (an extension or a graphics setting; 
 
 ## The reviewer's README
 
-A separate, small pull request in `db-architecture-reviewer`: at the top, `[![Real schemas, rotatable](https://greenstevester.github.io/postgres-schema-gallery/banner.gif)](https://github.com/greenstevester/postgres-schema-gallery)` with a one-line caption naming the products. Steve decided on 2026-09-04 that the gallery's front door is the repository: every published link to "the gallery" is the repo URL, the repo's homepage field carries the live site, and only deep links to a product's docs or explorer (and the banner image itself) use the Pages address `greenstevester.github.io`, never the custom domain `greensill.net` that also serves it. The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
+A separate, small pull request in `archlens-postgres`: at the top, `[![Real schemas, rotatable](https://greenstevester.github.io/postgres-schema-gallery/banner.gif)](https://github.com/greenstevester/postgres-schema-gallery)` with a one-line caption naming the products. Steve decided on 2026-09-04 that the gallery's front door is the repository: every published link to "the gallery" is the repo URL, the repo's homepage field carries the live site, and only deep links to a product's docs or explorer (and the banner image itself) use the Pages address `greenstevester.github.io`, never the custom domain `greensill.net` that also serves it. The image is served from the gallery's Pages site, so the reviewer repo never carries the file and the banner refreshes whenever the gallery rebuilds.
 
 ## Deployment
 

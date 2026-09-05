@@ -8,7 +8,7 @@ import type { Product } from './manifest.ts';
 import { narrativesFor } from './narratives.ts';
 
 export const REVIEWER_DIR = path.join(CACHE, 'reviewer');
-export const SKILL_DIR = path.join(REVIEWER_DIR, 'skills', 'db-architecture-review');
+export const SKILL_DIR = path.join(REVIEWER_DIR, 'skills', 'archlens-postgres');
 
 /** What schema3dModel() returns, as far as the gallery reads it. */
 export interface Schema3dModel {
@@ -30,7 +30,7 @@ export interface ReviewerLib {
 }
 
 export async function loadReviewer(): Promise<ReviewerLib> {
-  return import(pathToFileURL(path.resolve(SKILL_DIR, 'scripts', 'db-review.ts')).href) as Promise<ReviewerLib>;
+  return import(pathToFileURL(path.resolve(SKILL_DIR, 'scripts', 'archlens.ts')).href) as Promise<ReviewerLib>;
 }
 
 /** The pruned model the front-page miniature draws: enough for layout() and colours, nothing else. */
