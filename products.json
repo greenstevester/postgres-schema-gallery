@@ -48,7 +48,7 @@
       "license": "AGPL-3.0",
       "blurb": "Matrix homeserver: rooms, events, devices, end-to-end keys, federation. Almost no foreign keys by design; this is the full schema at schema version 72, before later deltas.",
       "source": { "kind": "sql", "paths": ["synapse/storage/schema/main/full_schemas/72/full.sql.postgres", "synapse/storage/schema/state/full_schemas/72/full.sql.postgres"] },
-      "domains": "prefix"
+      "domains": "curated"
     },
     {
       "slug": "sourcegraph",
