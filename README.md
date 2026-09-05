@@ -1,11 +1,3 @@
-<p align="center">
-  <a href="https://greenstevester.github.io/postgres-schema-gallery/"><img src="https://greenstevester.github.io/postgres-schema-gallery/banner.gif" alt="Real PostgreSQL schemas turning in the 3D explorer: one island per domain, every foreign key an arc" width="800"></a>
-</p>
-<p align="center">
-  <a href="https://greenstevester.github.io/postgres-schema-gallery/"><b>Open the gallery</b></a><br>
-  <sub>Every schema as a live, slowly turning miniature. Click one for its full explorer and the reviewer's findings.</sub>
-</p>
-
 <table>
   <tr>
     <td align="center" width="25%">
@@ -41,6 +33,11 @@
     <td align="center" width="25%"><sub>Each thumbnail is that product&#39;s schema map.<br>Click one to open its rotatable explorer.</sub></td>
   </tr>
 </table>
+
+<p align="center">
+  <a href="https://greenstevester.github.io/postgres-schema-gallery/"><b>Open the gallery</b></a><br>
+  <sub>The front page draws all seven live and turning, with the reviewer's findings behind each one.</sub>
+</p>
 
 # postgres-schema-gallery
 
